@@ -8,60 +8,44 @@
     <meta charset="utf-8" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
     <style type="text/css">
-    
-    /* class */
-    .large {
-        font-size:300%;
-    }
-   
-   /* id */
-    #green {
-        color:green;
-    }
-    
-    .underline {
-        text-decoration:underline;
-    }
-    
-    .bold {
-        font-weight: bold;
-    }
-    
-    .purplebox {
-        background-color:#393AA7;
-        width:200px;
-        height:200px;
-        z-index:1; 
-        padding:10px;/* padding puts a gap between the inner content of the element and the edges */
-        /* margin-left:25px;  Margin creates a specific space around element */
         
-    }
-    
-    .greenbox {
-        background-color:green;
-        width:300px;
-        height:100px;
-        float:right;
-        z-index:2;
+        /* class */     
+        div {
+            width: 100px;
+            height: 100px;
+            float: left;
+        }
         
-    }
-   
-    
-    
+        .red {
+            background-color: red;
+            border: 5px black solid;
+        }
+        
+        .blue {
+            background-color: blue;
+            border-style: ridge solid dotted dashed;
+            border-width: 10px 3px 5px 4px;
+            border-color:green;
+        }
+        
+        .green {
+            background-color: green;
+            border-radius: 10px
+        }
+        
     </style>
+    
 </head>
 
 <body>
-    <div class="purplebox">
-        <p class="large">This is some text.</p>
-    </div>
-    
-    <div class="greenbox">
-        <p id="green" class="large">This is some more text.</p>
-    </div>
-    
-        <p>The third <span class="underline large bold">word</span> in the paragraph is underlined.</p>
+
+    <div class="red"></div>
+
+    <div class="blue"></div>
+
+    <div class="green"></div>
 </body>
 
 </html>
