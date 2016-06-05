@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <!-- The good SEO stuff -->
+    
     <title>Learning CSS</title>
 
     <meta charset="utf-8" />
@@ -12,40 +12,35 @@
     <style type="text/css">
         
         /* class */     
-        div {
-            width: 100px;
-            height: 100px;
-            float: left;
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+           
         }
         
-        .red {
-            background-color: red;
-            border: 5px black solid;
+        .bold {
+            font-weight: bold;
+            color:green;
+            font-size:1.2em;
         }
         
-        .blue {
-            background-color: blue;
-            border-style: ridge solid dotted dashed;
-            border-width: 10px 3px 5px 4px;
-            border-color:green;
+        .italic {
+            font-style:italic;
         }
         
-        .green {
-            background-color: green;
-            border-radius: 10px
+        .underline {
+            text-decoration:underline;
         }
-        
     </style>
     
 </head>
 
 <body>
 
-    <div class="red"></div>
-
-    <div class="blue"></div>
-
-    <div class="green"></div>
+    <p class="bold">This is some text, we're going to pimp these fonts</p>
+    
+    <p class="italic">This is <span class="underline">italic</span> text</p>
+    
+    
 </body>
 
 </html>
