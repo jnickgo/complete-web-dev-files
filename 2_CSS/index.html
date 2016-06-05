@@ -13,29 +13,36 @@
         
         /* class */     
         p {
-            font-family: Arial, Helvetica, sans-serif;
-           
+           font-family: Arial, Helvetica, sans-serif;
+           text-align:right;
         }
         
-        .bold {
-            font-weight: bold;
-            color:green;
-            font-size:1.2em;
+        .greenbox {
+            width:300px;
+            height:50px;
+            background-color:green;
+            text-align:justify;
+        }
+        /* style visited links */
+        a:visited {
+            color: green;
         }
         
-        .italic {
-            font-style:italic;
-        }
-        
-        .underline {
-            text-decoration:underline;
+        a:hover {
+            font-size:50px
         }
     </style>
     
 </head>
 
 <body>
-
+    <p>Go to Google</p>
+    <a href="http//www.google.com" target=_blank>Google</a>
+    
+    <div class="greenbox">
+        <p>This is some text</p>
+    </div>
+    
     <p class="bold">This is some text, we're going to pimp these fonts</p>
     
     <p class="italic">This is <span class="underline">italic</span> text</p>
