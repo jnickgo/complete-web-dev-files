@@ -15,27 +15,40 @@
 </head>
 
 <body>
-    <p id="arrayString"></p>
-    
+    <p>How many fingers are you holding up?</p>
+
+    <input id="myNumber" />
+    <button id="guess">Guess</button>
+
     <!-- The JavaScript -->
     <script type="text/javascript">
 
-        // for loop
-        var arrayString = "";
+    document.getElementById("guess").onclick=function() {
 
-        var myArray = ["pizza", "burger", "taco", "ice cream", "curry"];
+        var gotIt = false;
+        var numOfGuesses = 1;
+        var x;
 
-        // iterate through array
-        for (var i=0; i<myArray.length; i++) {
+        while (gotIt == false) {
+            x = Math.random();
+            x = 6*x;
+            x = Math.floor(x);
 
-           //alert(myArray[i]); 
-           arrayString = arrayString + myArray[i] + "<br />";
+            if (document.getElementById("myNumber").value == x) {
+
+                gotIt = true;
+                
+            } else if {
+                
+                guesses++;
+
+            }
 
         }
+        alert("I got it! It was a " + x + ". It only took me " + numOfGuesses + " guesses!");
 
-        document.getElementById("arrayString").innerHTML = arrayString;
 
-
+    }
     </script>
 
 </body>
