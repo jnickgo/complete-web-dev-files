@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <p>How many fingers are you holding up?</p>
+    <p id="paragraph">How many fingers are you holding up?</p>
 
     <input id="myNumber" />
     <button id="guess">Guess</button>
@@ -23,32 +23,11 @@
     <!-- The JavaScript -->
     <script type="text/javascript">
 
-    document.getElementById("guess").onclick=function() {
-
-        var gotIt = false;
-        var numOfGuesses = 1;
-        var x;
-
-        while (gotIt == false) {
-            x = Math.random();
-            x = 6*x;
-            x = Math.floor(x);
-
-            if (document.getElementById("myNumber").value == x) {
-
-                gotIt = true;
-                
-            } else if {
-                
-                guesses++;
-
-            }
-
+        function adding(a, b) {
+            return(a+b);
         }
-        alert("I got it! It was a " + x + ". It only took me " + numOfGuesses + " guesses!");
 
-
-    }
+        document.getElementById("paragraph").innerHTML = adding(27, 45);
     </script>
 
 </body>
