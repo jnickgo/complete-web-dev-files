@@ -33,18 +33,24 @@
 
 <body>
 
-    <div id="circle"></div>
-
-    <div class="square"></div>
-
-    <div class="square"></div>
-
+    <p>This is some text.</p>
+    <button id="fader">Fade Out</button>
+    <button id="faderIn">Fade In</button>
 
     <script>
 
-        $(".square").hover(function()) {
+        // Call to function
+        $("#fader").click(function() {
+                // Callback after fadeOut
+            $("p").fadeOut(1000, function() {
+                alert("FadeOut complete!");
+            });
 
-            $(".square").css("width");
+        });
+
+        $("#faderIn").click(function() {
+
+            $("p").fadeIn(1000);
 
         });
 
