@@ -33,28 +33,23 @@
 
 <body>
 
-    <p>This is some text.</p>
-    <button id="fader">Fade Out</button>
-    <button id="faderIn">Fade In</button>
+    <div id="circle"></div>
 
     <script>
 
         // Call to function
-        $("#fader").click(function() {
-                // Callback after fadeOut
-            $("p").fadeOut(1000, function() {
-                alert("FadeOut complete!");
-            });
+        $("#circle").click(function() {
+                
+            $(this).animate({
+                width:"300px",
+                height:"300px",
+                borderRadius:"150px",
+                marginLeft:"100px",
+                marginTop:"100px"
+           	    },700);
 
         });
-
-        $("#faderIn").click(function() {
-
-            $("p").fadeIn(1000);
-
-        });
-
-        </script>
+    </script>
 
 
 
