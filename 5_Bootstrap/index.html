@@ -7,82 +7,190 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Bootstrap 101 Template</title>
+    <title>Bootstrap Project</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Style -->
+    <!-- Styling -->
     <style>
-        .box {
-            background-color: #d3d3d3;
-            border: 1px solid grey;
+        .navbar-brand {
+            font-size: 1.8em;
         }
         
-        .large {
-            font-size: 200%;
+        #topContainer {
+            background-image: url("http://www.pixelstalk.net/wp-content/uploads/2016/05/Silver-Blur-Background-Wallpaper.jpg");
+            height: 400px;
+            width: 100%;
+            background-size: cover;
         }
         
-        #div1 {
-            background-color: blue;
+        #topRow {
+            margin-top: 100px;
+            text-align: center;
         }
         
-        #div2 {
-            background-color: red;
+        #topRow h1 {
+            font-size: 300%;
         }
         
-        #div3 {
-            background-color: green;
+        .bold {
+            font-weight: bold;
         }
         
-        .contentDiv {
-            height: 800px;
+        .marginTop {
+            margin-top: 25px;
+        }
+        
+        .center {
+            text-align: center;
+        }
+        
+        .title {
+            margin-top: 100px;
+            font-size: 300%;
+        }
+        
+        #footer {
+            background-color: #B0D1FB;
+            padding-top: 70px;
+            width: 100%;
+        }
+        
+        .marginBottom {
+            margin-bottom: 30px;
+        }
+        
+        .playStoreImage {
+            width: 250px;
         }
     </style>
 
 </head>
 
-<body data-spy="scroll" data-target=".navbar-collapse">
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top">
 
         <div class="container">
             <div class="navbar-header">
-                <a href="" class="navbar-brand">My Website</a>
-
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">     
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand">My App</a>
             </div>
-
             <div class="collapse navbar-collapse">
-
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#div1">Page 1</a></li>
-                    <li><a href="#div2">Page 2</a></li>
-                    <li><a href="#div3">Page 3</a></li>
+                    <li class="active"><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
+
+                <!-- Login Form -->
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">
+                        <input type="email" placeholder="Email" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-success">Log In</button>
+                </form>
             </div>
+        </div>
+    </div>
+
+    <!-- First Containter -->
+    <div class="container contentContainer" id="topContainer">
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3" id="topRow">
+                <h1 class="marginTop">My Sweet App!</h1>
+
+                <p class="lead">This is our awesome app. Download it now.</p>
+
+                <p>Some more information about the app. Just the tip.</p>
+                <p class="bold marginTop">Interested? Join our mailing list.</p>
+
+                <form class="marginTop">
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+
+                        <input type="email" class="form-control" placeholder="Your email" />
+                    </div>
+                    <input type="submit" class="btn btn-success btn-lg marginTop" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Container -->
+    <div class="container contentContainer">
+
+        <div class="row" class="center">
+            <h1 class="center title">Why This App Is Awesome!</h1>
+            <p class="lead center">Summary of all the kick ass features.</p>
+
+        </div>
+
+        <div class="row marginBottom">
+
+            <div class="col-md-4 marginTop marginTop">
+                <h2><span class="glyphicon glyphicon-music"></span> Header 1</h2>
+                <p>A Brief description of one of the best features. Tjere are so many that you will not believe it. I mean look
+                    at all of this stuff, it's amazing. A Brief description of one of the best features. Tjere are so many
+                    that you will not believe it. I mean look at all of this stuff, it's amazing.</p>
+
+                <button class="btn btn-success marginTop">Sign Up!</button>
+            </div>
+
+            <div class="col-md-4 marginTop">
+                <h2><span class="glyphicon glyphicon-cog"></span> Header 2</h2>
+                <p>A Brief description of one of the best features. Tjere are so many that you will not believe it. I mean look
+                    at all of this stuff, it's amazing. A Brief description of one of the best features. Tjere are so many
+                    that you will not believe it. I mean look at all of this stuff, it's amazing.</p>
+
+                <button class="btn btn-success marginTop">Sign Up!</button>
+            </div>
+
+            <div class="col-md-4 marginTop">
+                <h2><span class="glyphicon glyphicon-picture"></span> Header 3</h2>
+                <p>A Brief description of one of the best features. Tjere are so many that you will not believe it. I mean look
+                    at all of this stuff, it's amazing. A Brief description of one of the best features. Tjere are so many
+                    that you will not believe it. I mean look at all of this stuff, it's amazing.</p>
+
+                <button class="btn btn-success marginTop">Sign Up!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Container -->
+    <div class="container contentContainer" id="footer">
+
+        <div class="row">
+            <h1 class="center title">Download the App!</h1>
+
+            <p class="lead center">Really, why should'nt you download this app?</p>
+
+            <p class="center"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" class="playStoreImage"
+                />
         </div>
 
     </div>
-    <h1>Our Bootstrap page</h1>
-    <div class="container">
 
-        <div id="div1" class="contentDiv">Content</div>
 
-        <div id="div2" class="contentDiv">Content</div>
-
-        <div id="div3" class="contentDiv">Content</div>
-
-    </div>
-
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <script>
+        $(".contentContainer").css("min-height",$(window).height());
+    </script>
+
+
 </body>
 
 </html>
