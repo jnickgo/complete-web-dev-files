@@ -39,4 +39,20 @@ print_r($thirdArray);
     echo "<br /><br />";
 
     unset($firstName);
+
+    $number = 1;
+    if ($number == 1) {
+        # code...
+        echo "True";
+    } else {
+        echo "False";
+    }
+
+
+    for ($i=1; $i<=10; $i++) {
+
+        echo $i."<br />";
+    }
+
+
 ?>

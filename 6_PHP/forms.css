@@ -1,0 +1,18 @@
+/*
+Style Name: Forms Custom CSS
+*/
+
+
+.grav-forms-container {
+    word-wrap: break-word;
+}
+
+.grav-forms-text-input {
+    padding: 10px 10px;
+    margin: 8px 0;
+}
+
+.grav-forms-date-input {
+    padding: 10px 10px;
+    margin: 8px 0;
+}
