@@ -1,58 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <title>PHP Forms</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+</head>
+
+<body>
+<div>
+
+
+
 <?php
 
-$firstName = "Nick";
-$lastName = "Gover";
+    $emailTo = "nickgover@gmail.com";
+    $subject = "I hope this works!";
+    $body = "I think you're great";
+    $headers = "nickgover@hotmail.com";
 
+    if (mail($emailTo, $subject, $body, $headers)) {
 
-$myArray=array("pizza", "chocolate", "coffee");
+        echo "Mail sent successfully";
 
-print_r($myArray); 
-
-echo "<br /><br />";
-
-echo $myArray[0];
-
-echo "<br /><br />";
-echo "<br /><br />";
-
-$thirdArray=array(
-
-    "France" => "French",
-    "USA" => "English",
-    "Germany" => "German"
-);
-
-print_r($thirdArray);
-
-    $anotherArray[]="salad";
-
-    echo "<br /><br />";
-
-    print_r($anotherArray);
-
-    echo "<br /><br />";
-
-    unset($thirdArray["Germany"]);
-
-    print_r($thirdArray);
-
-    echo "<br /><br />";
-
-    unset($firstName);
-
-    $number = 1;
-    if ($number == 1) {
-        # code...
-        echo "True";
     } else {
-        echo "False";
+        echo "Mail not sent!";
     }
-
-
-    for ($i=1; $i<=10; $i++) {
-
-        echo $i."<br />";
-    }
-
 
 ?>
+
+</div>
+</body>
+</html>
