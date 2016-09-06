@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>PHP Contact Form</title>
+    <title>Weather Getter Xpress</title>
     <meta charset="utf-8" />
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,123 +15,126 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
         crossorigin="anonymous">
 
-   
+<style>
 
-    <style>
-
-        .emailForm {
-            border-radius: 10px;
-            margin-top: 20px
-            padding: 10px;
-        }
+    html, body {
+        height: 100%;
         
-        textarea {
-            height: 120px;
+    }
 
-        }
+    .container {
+        background-image: url("background.jpg");
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        padding-top: 150px;
+    }
 
-        form {
-            padding-bottom: 20px;
-        }
+    .center {
+        text-align: center;
+    }
 
-    </style>
+    .white {
+        color: white;
+    }
+
+    p {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    button {
+        margin-top: 20px;
+    }
+
+    #success {
+        margin-top: 20px;
+        display: none;
+    }
+
+    #fail {
+        margin-top: 20px;
+        display: none;
+    }
+
+    #noCity {
+        margin-top: 20px;
+        display: none;
+    }
+
+
+</style>
 
 
 </head>
 
-<body>
+    <body>
 
-        <?php
+    <div class="container">
 
-            /*  Pre-populated list of names to check against.   */
-            if ($_POST["submit"]) {
+        <div class="row">
 
-                    
-                /* If name is empty return error */
-                if(!$_POST['name']) {
-                    $error="<br />Please enter your name";
-                }
+            <div class="col-md-6 col-md-offset-3 center white">
 
-                /* If email is empty return error */
-                if(!$_POST['email']) {
-                    $error.="<br />Please enter your email address";
-                }
+            <h1 class="center">Weather Master 3000</h1>
 
-                /* If comment is empty return error */
-                if(!$_POST['comment']) {
-                    $error.="<br />Please enter your comment";
-                }
-   
+            <p class="lead center">Enter your city below to get the weather sucka!</p>
 
-                /* validate the email address value if it is submitted */
-                if ($_POST['email']!="" AND !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
- 	 	 	
- 	 	            $error.="<br />Please enter a valid email address";
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="city" id="city" placeholder="Eg. Kansas City, Seattle, Dallas..." />
 
-	 	        }
-
-
-                if ($error) {
-
-                    $result='<div class="alert alert-danger"><strong>There were error(s)
-                    in your form:</strong>'.$error.'</div>';
-
-                            } else {
-
-                            if (mail("nickgover@gmail.com", "Comment from website!", "Name: ".
-                            $_POST['name']."
-
-                            Email: ".$_POST['email']."
-
-                            Comment: ".$_POST['comment'])) {
-
-                            $result='<div class="alert alert-success"><strong>Thank
-                            you!</strong> I\'ll be in touch.</div>';
-
-                            } else {
-
-                            $result='<div class="alert alert-danger">Sorry, there was
-                            an error sending your message. Please try again later.</div>';
-
-                            }
-
-                    }
-
-                }
-        ?>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3 emailForm">
-                <h1>My Email Form</h1>
-                <?php echo $result; ?>
-                <p class="lead">Please get in touch - I'll get back to you as soon as I can.</p>
-
-
-                <form method="post">
-                    <div class="form-group">
-                        <label for="name">Your Name:</label>
-                        <input type="text" name="name" class="form-control" placeholder="Your Name" value="<?php echo $_POST['name']; ?>" />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Your Email:</label>
-                        <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $_POST['email']; ?>" />
-                    </div>
-                    <div class="form-group">
-                        <label for="comment">Your Comment:</label>
-                        <textarea class="form-control" name="comment"><?php echo $_POST['comment']; ?></textarea>
-                    </div>
-                    <input type="submit" name="submit" class="btn btn-success btn-lg" value="Submit"/>
-                </form>
-            
                 </div>
-            </div>
-        </div>
 
-     <!-- Latest compiled and minified JavaScript -->
+                <button id="findMyWeather" class="btn btn-success btn-lg">Find My Weather</button>
+
+            </form>
+
+            <div id="success" class="alert alert-success">Success!</div>
+            <div id="fail" class="alert alert-danger">Not able to find indicated city!</div>
+            <div id="noCity" class="alert alert-warning">Please enter a city!</div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+            crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+    <script>
+        $("#findMyWeather").click(function(event) {
+
+                event.preventDefault();
+                $(".alert").hide();
+
+            if ($("#city").val()!="") {
+            $.get("scraper.php?city="+$("#city").val(), function( data ) {
+      
+                    if (data=="") {
+
+                        $("#fail").fadeIn();
+
+                    } else {
+
+                        $("#success").html(data).fadeIn();
+                    }
+                });
+
+            } else {
+
+                $("#noCity").fadeIn();
+            }
+
+
+        });
+
+    </script>
+
 </body>
 
 </html>
