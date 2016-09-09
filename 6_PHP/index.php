@@ -51,16 +51,20 @@
     #success {
         margin-top: 20px;
         display: none;
+        padding-bottom: 15px;
+
     }
 
     #fail {
         margin-top: 20px;
         display: none;
+        padding-bottom: 15px;
     }
 
     #noCity {
         margin-top: 20px;
         display: none;
+        padding-bottom: 15px;
     }
 
 
