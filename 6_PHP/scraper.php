@@ -9,6 +9,10 @@ $contents = file_get_contents("http://www.weather-forecast.com/locations/".$city
 
 preg_match('/3 Day Weather Forecast Summary:<\/b><span class="read-more-small"><span class="read-more-content"> <span class="phrase">(.*?)</s', $contents, $matches);
 
+ // Need to get child elements to get temperature and such.
+ // $div = $dom->getElementsById('current_conditions-summary');
+
+
 echo $matches[1];
 
 

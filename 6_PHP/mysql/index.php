@@ -1,14 +1,14 @@
 <?php
 
-    session_start();
+    // Password encoding
 
-    // create a session variable
-    $_SESSION['loginid']=1;
+    $salt = "i3salk0av3Qdfa9af";
+    $userId = "01B";
+    $userPassword = "my&0adf32";
 
-    echo $_SESSION['loginid'];
+    echo md5($salt.$userPassword);
 
-
-
+    
     // create a database connection.
     $hostname = "dev.learning.nickgover.com";
     $username = "justauser";
@@ -44,7 +44,7 @@
 
         // print out each row
         while ($row = mysqli_fetch_array($resultSet)) {
-            print_r($row);
+        //    print_r($row);
         }
 
     } else {
