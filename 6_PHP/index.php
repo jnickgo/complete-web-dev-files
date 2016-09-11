@@ -1,144 +1,76 @@
-<!doctype html>
-<html>
+<?php
 
-<head>
-    <title>Weather Getter Xpress</title>
-    <meta charset="utf-8" />
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    session_start();
 
-     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
+    if ($_POST['submit']) {
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-        crossorigin="anonymous">
+      // If email is empty
+      if (!$_POST['email']) $error.="<br />Please enter your email";
+			
+            // if email is not valid
+            else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) $error.="<br />Please enter a valid email"; 
+ 		
+        // if password is empty
+ 		if (!$_POST['password']) $error.="<br />Please enter your password";
+ 		else { 
+  
+            // if password does not meet length requirements
+ 			if (strlen($_POST['password'])<8) $error.="<br />Please enter at least 8 characters";
+ 
+ 			if(!preg_match('`/[A-Z]/`', $_POST['password'])) $error.="<br />Please include min 1 capital letter";
+ 		}
+			if ($error) echo "There were error(s) in your sign up details:".$error;
 
-<style>
+			else {
 
-    html, body {
-        height: 100%;
-        
-    }
+                $link = mysqli_connect("dev.learning.nickgover.com", "justauser", "soUiu0dW", "cwd_diary");
 
-    .container {
-        background-image: url("background.jpg");
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        padding-top: 150px;
-    }
+                $query= "SELECT * FROM `users` WHERE email ='".mysqli_real_escape_string($link, $_POST['email'])."'";
 
-    .center {
-        text-align: center;
-    }
+                $result = msqli_query($link, $query);
 
-    .white {
-        color: white;
-    }
+                $results = mysqli_num_rows($result);
+            
+            if ($results) echo "That email address is already registered.  Do you want to log in?";
+            else {
 
-    p {
-        padding-top: 15px;
-        padding-bottom: 15px;
-    }
+                $query = "INSERT INTO `users` (`email`, `password`) VALUES ('".mysqli_real_escape_string($link, $_POST['email'])."', '".md5(md5($_POST['email']).$_POST['password'])."')";
+                mysqli_query($link, $query);
 
-    button {
-        margin-top: 20px;
-    }
+                echo "You've been signed up!";
 
-    #success {
-        margin-top: 20px;
-        display: none;
-        padding-bottom: 15px;
+                $_SESSION['id']=mysqli_insert_id($link);
 
-    }
+                print_r($_SESSION);
 
-    #fail {
-        margin-top: 20px;
-        display: none;
-        padding-bottom: 15px;
-    }
+                // Redirect to logged in page
+           }
+        }
+     }
+?>
 
-    #noCity {
-        margin-top: 20px;
-        display: none;
-        padding-bottom: 15px;
-    }
+    <!-- Sign-up form -->
+    <form method="post">
+        <!-- reload email on failed login -->
+        <input type="email" name="email" id="email" value="<?php echo addslashes($_POST['email']); ?>" />
+
+        <!-- reload password on failed login -->
+        <input type="password" name="password" value="<?php echo addslashes($_POST['password']); ?>" />
 
 
-</style>
+        <input type="submit" name="submit" value="Sign Up" />
+
+    </form>
+
+    <!-- Log-in form -->
+    <form method="post">
+        <!-- reload email on failed login -->
+        <input type="email" name="loginEmail" id="loginEmail" value="<?php echo addslashes($_POST['email']); ?>" />
+
+        <!-- reload password on failed login -->
+        <input type="password" name="loginPassword" value="<?php echo addslashes($_POST['password']); ?>" />
 
 
-</head>
+        <input type="submit" name="submit" value="Log In" />
 
-    <body>
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-6 col-md-offset-3 center white">
-
-            <h1 class="center">Weather Master 3000</h1>
-
-            <p class="lead center">Enter your city below to get the weather sucka!</p>
-
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" name="city" id="city" placeholder="Eg. Kansas City, Seattle, Dallas..." />
-
-                </div>
-
-                <button id="findMyWeather" class="btn btn-success btn-lg">Find My Weather</button>
-
-            </form>
-
-            <div id="success" class="alert alert-success">Success!</div>
-            <div id="fail" class="alert alert-danger">Not able to find indicated city!</div>
-            <div id="noCity" class="alert alert-warning">Please enter a city!</div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
-
-    <script>
-        $("#findMyWeather").click(function(event) {
-
-                event.preventDefault();
-                $(".alert").hide();
-
-            if ($("#city").val()!="") {
-            $.get("scraper.php?city="+$("#city").val(), function( data ) {
-      
-                    if (data=="") {
-
-                        $("#fail").fadeIn();
-
-                    } else {
-
-                        $("#success").html(data).fadeIn();
-                    }
-                });
-
-            } else {
-
-                $("#noCity").fadeIn();
-            }
-
-
-        });
-
-    </script>
-
-</body>
-
-</html>
+    </form>
